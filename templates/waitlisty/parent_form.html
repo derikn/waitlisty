@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="box shadow">
+<h2>Add Parent/Guardian</h2>
+	<form action="" method="post">{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Create" />
+	</form>
+</div>
+{% endblock %}

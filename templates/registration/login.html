@@ -1,0 +1,41 @@
+{% load i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    
+	<title>{% block title %}User{% endblock %}</title>
+</head>
+
+{% block content %}
+{% load staticfiles %}
+
+<div class="logo">
+<img src="{% static "img/logo.png" %}" alt="logo"/>
+</div>
+
+<form method="post" action=".">
+  {% csrf_token %}
+<div class="form-signin shadow">
+		<label for="id_username">USERNAME:</label>
+        {{ form.username }}
+		<label for="id_password">PASSWORD:</label>
+		{{ form.password }}
+	
+</div>
+<div class="container">
+	<div class="span8">
+		<input class="login_button" type="submit" value="{% trans 'LOGIN' %}" />
+		<input type="hidden" name="next" value="{{ next }}" />
+	</div>
+</div>
+</form>
+<div class="signup-options">
+	<p><a href="{% url 'auth_password_reset' %}">{% trans "Forgot your password" %}</a>?</p>
+	<p>{% trans "New to Waitlisty" %}? <a href="{% url 'waitlisty.views.disclaimer' %}">{% trans "Create an account" %}</a>!</p>
+	{% endblock %}
+</div>

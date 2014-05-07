@@ -1,0 +1,53 @@
+{% load i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    
+	<title>{% block title %}User{% endblock %}</title>
+</head>
+
+<body>
+<div class="header">
+
+	<div class="nav-logo">
+		<a href="{% url 'index' %}">	
+			<img style="border:0" src="{% static "img/small_logo.png" %}" alt="logo"/>
+		</a>
+	</div>
+        {% block header %}	
+	
+        {% endblock %}
+    </div>
+<div class="header-strip">
+	<div style="font-weight:bold" class="strip-left">
+		{% trans "our centres" %}
+	</div>
+	<div class="strip-right">
+		{% if user.is_authenticated %}
+		{% trans "Logged in" %}: {{ user.username }} 
+		(<a href="{% url 'auth_logout' %}">{% trans "Log out" %}</a> | 
+		<a href="{% url 'auth_password_change' %}">{% trans "Change password" %}</a>)
+		{% else %}
+		<a href="{% url 'auth_login' %}">{% trans "Log in" %}</a>
+		{% endif %}
+		
+	</div>
+</div>
+<div style="padding-top:40px" class="container">
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <div id="footer">
+        {% block footer %}
+        {% endblock %}
+    </div>
+</body>
+
+</html>

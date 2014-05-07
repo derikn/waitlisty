@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+{% load staticfiles %}
+
+<div class="container">
+	<div class="box shadow span12">
+		<h2>DISCLAIMER</h2>
+		<hr>
+		<p>Please note: Your child will be registered onto the waiting list only if an application is completed and submitted.  Your 
+		child will be given his/her place on the waiting list based on the date you fill out the application.  Please ensure contact 
+		details are updated in your profile, as our waiting list procedure states that if we attempt to offer you a spot and are not
+		able to contact you on more than two occasions, your child's place on the waiting list will be jeopardized, and your child 
+		may be placed at the bottom of the list. Please also ensure that you have applied for each center in which you may want 
+		a placement for each child.  We do not assume if you apply for Variety childcare, for example, that you also wish to apply 
+		at  Fairhaven childcare. .....
+		</p>
+
+		<a class="continue" href="{% url 'registration_register' %}">
+			CONTINUE
+		</a>
+		<br>
+	</div>
+</div>
+{% endblock %}

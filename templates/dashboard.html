@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container-fluid fill">
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="box shadow">
+			<h5>YOUR INFORMATION</h5>
+			<hr>
+			{% for parent in parents %}
+			{{parent.first_name}} {{parent.last_name}}
+			<li>{{parent.cell_phone}}</li>
+			<li>{{parent.contact_email}}</li>
+			{% endfor %}
+			</div>
+        </div>
+        <div class="span9">
+            <div class="box shadow">
+			<h5>YOUR CHILDREN</h5>
+			{% for child in children %}
+			<p>{{child.first_name}} {{child.last_name}}</p>
+			{% endfor %}
+			</div>
+        </div>
+    </div>
+</div>
+{% endblock %}
